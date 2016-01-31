@@ -1,6 +1,6 @@
 # SwiftString
 
-[![CI Status](http://img.shields.io/travis/Andrew Mayne/SwiftString.svg?style=flat)](https://travis-ci.org/amayne/SwiftString)
+[![CI Status](http://img.shields.io/travis/amayne/SwiftString.svg?style=flat)](https://travis-ci.org/amayne/SwiftString)
 [![Version](https://img.shields.io/cocoapods/v/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)
 [![License](https://img.shields.io/cocoapods/l/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)

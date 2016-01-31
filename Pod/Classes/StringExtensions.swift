@@ -228,7 +228,7 @@ public extension String {
             let startIndex = self.startIndex.advancedBy(r.startIndex)
             let endIndex = self.startIndex.advancedBy(r.endIndex - r.startIndex)
             
-            return self[Range(start: startIndex, end: endIndex)]
+            return self[startIndex..<endIndex]
         }
     }
     
@@ -236,7 +236,7 @@ public extension String {
     {
         let start = self.startIndex.advancedBy(startIndex)
         let end = self.startIndex.advancedBy(startIndex + length)
-        return self[Range(start: start, end: end)]
+        return self[start..<end]
     }
     
     subscript (i: Int) -> Character
