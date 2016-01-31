@@ -7,6 +7,8 @@
 [![Swift-2.1](http://img.shields.io/badge/Swift-2.1-blue.svg)]()
 
 SwiftString is a lightweight string extension for Swift.
+This library was motivated by having to search StackOverflow for common string operations,
+and wanting them to be in one place with test coverage.
 
 ## Installation
 
