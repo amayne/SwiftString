@@ -19,6 +19,12 @@ pod "SwiftString"
 
 ## Usage
 
+```swift
+import SwiftString
+```
+
+## Methods
+
 **between(left, right)**
 ```swift
 "<a>foo</a>".between("<a>", "</a>") // "foo"
