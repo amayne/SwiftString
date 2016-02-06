@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SwiftString"
-  s.version          = "0.2"
+  s.version          = "0.3"
   s.summary          = "A lightweight string extension for Swift"
 
   s.description      = <<-DESC
