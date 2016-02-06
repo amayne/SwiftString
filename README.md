@@ -5,7 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)
 [![Swift-2.1](http://img.shields.io/badge/Swift-2.1-blue.svg)]()
-[![Twitter URL](https://img.shields.io/twitter/url/http/github.com/amayne/SwiftString.svg?style=social)]()
 
 SwiftString is a lightweight string extension for Swift.
 This library was motivated by having to search StackOverflow for common string operations,
