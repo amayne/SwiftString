@@ -37,6 +37,12 @@ class SwiftStringTests: XCTestCase {
         assertThat("  String   \t libraries are   \n\n\t fun\n!  ".collapseWhitespace() == "String libraries are fun !")
     }
     
+    func testContains() {
+        assertThat("foobar".contains("foo") == true)
+        assertThat("foobar".contains("ba") == true)
+        assertThat("foobar".contains("something") == false)
+    }
+    
     func testCount() {
         assertThat("hi hi ho hey hihey".count("hi") == 3)
     }
@@ -54,6 +60,12 @@ class SwiftStringTests: XCTestCase {
     func testEnsureRight() {
         assertThat("subdir/".ensureRight("/") == "subdir/")
         assertThat("subdir".ensureRight("/") == "subdir/")
+    }
+    
+    func testIndexOf() {
+        assertThat("hello".indexOf("hell"), presentAnd(equalTo(0)))
+        assertThat("hello".indexOf("lo"), presentAnd(equalTo(3)))
+        assertThat("hello".indexOf("world"), nilValue())
     }
     
     func testIsAlpha() {

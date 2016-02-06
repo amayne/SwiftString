@@ -36,6 +36,10 @@ public extension String {
         return capitalizedString
     }
     
+    func contains(substring: String) -> Bool {
+        return rangeOfString(substring) != nil
+    }
+    
     func chompLeft(prefix: String) -> String {
         if let prefixRange = rangeOfString(prefix) {
             if prefixRange.endIndex >= endIndex {
@@ -93,6 +97,13 @@ public extension String {
         } else {
             return "\(self)\(suffix)"
         }
+    }
+    
+    func indexOf(substring: String) -> Int? {
+        if let range = rangeOfString(substring) {
+            return startIndex.distanceTo(range.startIndex)
+        }
+        return nil
     }
     
     func isAlpha() -> Bool {
@@ -219,11 +230,11 @@ public extension String {
         return self
     }
     
-    func trimmed () -> String {
+    func trimmed() -> String {
         return trimmedLeft().trimmedRight()
     }
     
-    subscript (r: Range<Int>) -> String {
+    subscript(r: Range<Int>) -> String {
         get {
             let startIndex = self.startIndex.advancedBy(r.startIndex)
             let endIndex = self.startIndex.advancedBy(r.endIndex - r.startIndex)
@@ -232,15 +243,13 @@ public extension String {
         }
     }
     
-    func substring(startIndex: Int, length: Int) -> String
-    {
+    func substring(startIndex: Int, length: Int) -> String {
         let start = self.startIndex.advancedBy(startIndex)
         let end = self.startIndex.advancedBy(startIndex + length)
         return self[start..<end]
     }
     
-    subscript (i: Int) -> Character
-        {
+    subscript(i: Int) -> Character {
         get {
             let index = self.startIndex.advancedBy(i)
             return self[index]

@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftString.svg?style=flat)](http://cocoapods.org/pods/SwiftString)
 [![Swift-2.1](http://img.shields.io/badge/Swift-2.1-blue.svg)]()
+[![Twitter URL](https://img.shields.io/twitter/url/http/github.com/amayne/SwiftString.svg?style=social)]()
 
 SwiftString is a lightweight string extension for Swift.
 This library was motivated by having to search StackOverflow for common string operations,
@@ -67,6 +68,13 @@ import SwiftString
 "  String   \t libraries are   \n\n\t fun\n!  ".collapseWhitespace() // "String libraries are fun !")
 ```
 
+**contains(substring)**
+```swift
+"foobar".contains("foo") // true
+"foobar".contains("bar") // true
+"foobar".contains("something") // false
+```
+
 **count(string)**
 ```swift
 "hi hi ho hey hihey".count("hi") // 3
@@ -95,6 +103,13 @@ import SwiftString
 ```swift
 "subdir/".ensureRight("/") // "subdir/"
 "subdir".ensureRight("/") // "subdir/"
+```
+
+**indexOf(substring)**
+```swift
+"hello".indexOf("hell"), // 0
+"hello".indexOf("lo"), // 3
+"hello".indexOf("world") // nil
 ```
 
 **isAlpha()**
