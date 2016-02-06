@@ -116,6 +116,21 @@ class SwiftStringTests: XCTestCase {
         assertThat("test\nsentence".lines() == ["test", "sentence"])
         assertThat("test \nsentence".lines() == ["test ", "sentence"])
     }
+
+    func testPad() {
+        assertThat("hello".pad(2) == "  hello  ")
+        assertThat("hello".pad(1, "\t") == "\thello\t")
+    }
+    
+    func testPadLeft() {
+        assertThat("hello".padLeft(10) == "          hello")
+        assertThat("what?".padLeft(2, "!") == "!!what?")
+    }
+    
+    func testPadRight() {
+        assertThat("hello".padRight(10) == "hello          ")
+        assertThat("hello".padRight(2, "!") == "hello!!")
+    }
     
     func testStartsWith() {
         assertThat("hello world".startsWith("hello") == true)
@@ -126,6 +141,11 @@ class SwiftStringTests: XCTestCase {
         assertThat("hello world".split(" ")[0] == "hello")
         assertThat("hello world".split(" ")[1] == "world")
         assertThat("helloworld".split(" ")[0] == "helloworld")
+    }
+    
+    func testTimes() {
+        assertThat("hi".times(3) == "hihihi")
+        assertThat(" ".times(10) == "          ")
     }
     
     func testTrimmedLeft() {
@@ -139,7 +159,6 @@ class SwiftStringTests: XCTestCase {
     func testTrimmed() {
         assertThat("    How are you?   ".trimmed() == "How are you?")
     }
-    
     
     func testToBool() {
         assertThat("asdwads".toBool(), nilValue())

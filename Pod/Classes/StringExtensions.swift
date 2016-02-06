@@ -150,6 +150,18 @@ public extension String {
         }
     }
     
+    func pad(n: Int, _ string: String = " ") -> String {
+        return "".join([string.times(n), self, string.times(n)])
+    }
+    
+    func padLeft(n: Int, _ string: String = " ") -> String {
+        return "".join([string.times(n), self])
+    }
+    
+    func padRight(n: Int, _ string: String = " ") -> String {
+        return "".join([self, string.times(n)])
+    }
+    
     func slugify() -> String {
         let slugCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-")
         return latinize()
@@ -173,6 +185,10 @@ public extension String {
             .componentsSeparatedByString(" ")
             .filter { $0 != "" }
             .joinWithSeparator(" ")
+    }
+    
+    func times(n: Int) -> String {
+        return (0..<n).reduce("") { $0.0 + self }
     }
     
     func toFloat() -> Float? {

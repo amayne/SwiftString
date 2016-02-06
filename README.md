@@ -168,6 +168,24 @@ import SwiftString
 "test \nsentence".lines() // ["test ", "sentence"]
 ```
 
+**pad(n, string)**
+```swift
+"hello".pad(2) // "  hello  "
+"hello".pad(1, "\t") // "\thello\t"
+```
+
+**padLeft(n, string)**
+```swift
+"hello".padLeft(10) // "          hello"
+"what?".padLeft(2, "!") // "!!what?"
+```
+
+**padRight(n, string)**
+```swift
+"hello".padRight(10) // "hello          "
+"hello".padRight(2, "!") // "hello!!"
+```
+
 **startsWith(prefix)**
 ```swift
 "hello world".startsWith("hello") // true
@@ -181,19 +199,10 @@ import SwiftString
 "helloworld".split(" ")[0] // "helloworld"
 ```
 
-**trimmedLeft()**
+**times(n)**
 ```swift
-"        How are you? ".trimmedLeft() // "How are you? "
-```
-
-**trimmedRight()**
-```swift
-" How are you?   ".trimmedRight() // " How are you?"
-```
-
-**trimmed()**
-```swift
-"    How are you?   ".trimmed() // "How are you?"
+"hi".times(3) // "hihihi"
+" ".times(10) // "          "
 ```
 
 **toBool()**
@@ -234,6 +243,21 @@ import SwiftString
 "asdwads".toDouble() // nil
 "2.00".toDouble() // 2.0
 "2".toDouble() // 2.0
+```
+
+**trimmedLeft()**
+```swift
+"        How are you? ".trimmedLeft() // "How are you? "
+```
+
+**trimmedRight()**
+```swift
+" How are you?   ".trimmedRight() // " How are you?"
+```
+
+**trimmed()**
+```swift
+"    How are you?   ".trimmed() // "How are you?"
 ```
 
 **slugify()**
