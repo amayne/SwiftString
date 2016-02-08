@@ -9,6 +9,8 @@ class SwiftStringTests: XCTestCase {
         assertThat("<a><a>foo</a></a>".between("<a>", "</a>"), presentAnd(equalTo("<a>foo</a>")))
         assertThat("<a>foo".between("<a>", "</a>"), nilValue())
         assertThat("Some strings } are very {weird}, dont you think?".between("{", "}"), presentAnd(equalTo("weird")))
+        assertThat("<a></a>".between("<a>", "</a>"), nilValue())
+        assertThat("<a>foo</a>".between("<a>", "<a>"), nilValue())
     }
     
     func testCamelize() {
