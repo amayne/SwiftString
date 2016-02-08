@@ -9,12 +9,21 @@
 import Foundation
 
 public extension String {
-    
+
+    ///  Finds the string between two bookend strings if it can be found.
+    ///
+    ///  - parameter left:  The left bookend
+    ///  - parameter right: The right bookend
+    ///
+    ///  - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
     func between(left: String, _ right: String) -> String? {
-        if let leftRange = rangeOfString(left), rightRange = rangeOfString(right, options: .BackwardsSearch) {
-            return self[leftRange.endIndex...rightRange.startIndex.predecessor()]
-        }
-        return nil
+        guard
+            let leftRange = rangeOfString(left), rightRange = rangeOfString(right, options: .BackwardsSearch)
+            where left != right && leftRange.endIndex != rightRange.startIndex
+            else { return nil }
+
+        return self[leftRange.endIndex...rightRange.startIndex.predecessor()]
+
     }
     
     // https://gist.github.com/stevenschobert/540dd33e828461916c11
