@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SwiftString"
-  s.version          = "0.3"
+  s.version          = "0.4"
   s.summary          = "A lightweight string extension for Swift"
 
   s.description      = <<-DESC
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/amayne/SwiftString.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/amayne'
 
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '8.0, :tvos, 9.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
