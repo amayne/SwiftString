@@ -214,8 +214,10 @@ public extension String {
         return nil
     }
     
-    func toDouble() -> Double? {
-        if let number = NSNumberFormatter().numberFromString(self) {
+    func toDouble(locale: NSLocale = NSLocale.systemLocale()) -> Double? {
+        let nf = NSNumberFormatter()
+        nf.locale = locale
+        if let number = nf.numberFromString(self) {
             return number.doubleValue
         }
         return nil
