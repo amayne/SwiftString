@@ -115,6 +115,16 @@ public extension String {
         return nil
     }
     
+    func initials() -> String {
+        let words = self.componentsSeparatedByString(" ")
+        return words.reduce(""){$0 + $1[0...0]}
+    }
+    
+    func initialsFirstAndLast() -> String {
+        let words = self.componentsSeparatedByString(" ")
+        return words.reduce("") { ($0 == "" ? "" : $0[0...0]) + $1[0...0]}
+    }
+    
     func isAlpha() -> Bool {
         for chr in characters {
             if (!(chr >= "a" && chr <= "z") && !(chr >= "A" && chr <= "Z") ) {
