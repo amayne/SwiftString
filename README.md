@@ -33,6 +33,8 @@ import SwiftString
 "<a><a>foo</a></a>".between("<a>", "</a>") // "<a>foo</a>"
 "<a>foo".between("<a>", "</a>") // nil
 "Some strings } are very {weird}, dont you think?".between("{", "}") // "weird"
+"<a></a>".between("<a>", "</a>") // nil
+ "<a>foo</a>".between("<a>", "<a>") // nil
 ```
 
 **camelize()**
