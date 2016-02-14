@@ -70,6 +70,17 @@ class SwiftStringTests: XCTestCase {
         assertThat("hello".indexOf("world"), nilValue())
     }
     
+    func testInitials() {
+        assertThat("First".initials() == "F")
+        assertThat("First Last".initials() == "FL")
+        assertThat("First Middle1 Middle2 Middle3 Last".initials() == "FMMML")
+    }
+    
+    func testInitialsFirstAndLast() {
+        assertThat("First Last".initialsFirstAndLast() == "FL")
+        assertThat("First Middle1 Middle2 Middle3 Last".initialsFirstAndLast() == "FL")
+    }
+    
     func testIsAlpha() {
         assertThat("fdafaf3".isAlpha() == false)
         assertThat("afaf".isAlpha() == true)

@@ -113,6 +113,19 @@ import SwiftString
 "hello".indexOf("world") // nil
 ```
 
+**initials()**
+```swift
+"First".initials(), // "F"
+"First Last".initials(), // "FL"
+"First Middle1 Middle2 Middle3 Last".initials() // "FMMML"
+```
+
+**initialsFirstAndLast()**
+```swift
+"First Last".initialsFirstAndLast(), // "FL"
+"First Middle1 Middle2 Middle3 Last".initialsFirstAndLast() // "FL"
+```
+
 **isAlpha()**
 ```swift
 "fdafaf3".isAlpha() // false
