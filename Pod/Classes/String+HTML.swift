@@ -1,7 +1,5 @@
 // adapted from https://gist.github.com/mwaterfall/25b4a6a06dc3309d9555
 
-import Foundation
-
 public extension String {
     
     private struct HTMLEntities {

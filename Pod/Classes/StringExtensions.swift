@@ -6,8 +6,6 @@
 //  Copyright © 2016 Red Brick Labs. All rights reserved.
 //
 
-import Foundation
-
 public extension String {
 
     ///  Finds the string between two bookend strings if it can be found.
