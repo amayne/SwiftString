@@ -171,6 +171,10 @@ class SwiftStringTests: XCTestCase {
     
     func testTrimmed() {
         assertThat("    How are you?   ".trimmed() == "How are you?")
+        //Added per Issue #9 - https://github.com/amayne/SwiftString/issues/9
+        assertThat(" ".trimmed().characters.count == 0)
+        assertThat("  ".trimmed().characters.count == 0)
+        assertThat("   ".trimmed().characters.count == 0)
     }
     
     func testToBool() {

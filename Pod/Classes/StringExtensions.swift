@@ -253,7 +253,6 @@ public extension String {
         if let range = rangeOfCharacterFromSet(NSCharacterSet.whitespaceAndNewlineCharacterSet().invertedSet) {
             return self[range.startIndex..<endIndex]
         }
-        
         return self
     }
     
@@ -266,7 +265,7 @@ public extension String {
     }
     
     func trimmed() -> String {
-        return trimmedLeft().trimmedRight()
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
     
     subscript(r: Range<Int>) -> String {
