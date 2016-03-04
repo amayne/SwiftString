@@ -26,7 +26,7 @@ public extension String {
     
     // https://gist.github.com/stevenschobert/540dd33e828461916c11
     func camelize() -> String {
-        let source = clean(" ", allOf: "-", "_")
+        let source = clean(with: " ", allOf: "-", "_")
         if source.characters.contains(" ") {
             let first = source.substringToIndex(source.startIndex.advancedBy(1))
             let cammel = NSString(format: "%@", (source as NSString).capitalizedString.stringByReplacingOccurrencesOfString(" ", withString: "", options: [], range: nil)) as String
@@ -74,7 +74,7 @@ public extension String {
         return components.joinWithSeparator(" ")
     }
     
-    func clean(with: String, allOf: String...) -> String {
+    func clean(with with: String, allOf: String...) -> String {
         var string = self
         for target in allOf {
             string = string.stringByReplacingOccurrencesOfString(target, withString: with)
@@ -138,8 +138,7 @@ public extension String {
     }
     
     func isEmpty() -> Bool {
-        let nonWhitespaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet().invertedSet
-        return componentsSeparatedByCharactersInSet(nonWhitespaceSet).joinWithSeparator("").length != 0
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).length == 0
     }
     
     func isNumeric() -> Bool {
@@ -158,7 +157,8 @@ public extension String {
     }
     
     func lines() -> [String] {
-        return characters.split{$0 == "\n"}.map(String.init)
+        return self.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+//        return characters.split{$0 == "\n"}.map(String.init)
     }
     
     var length: Int {
@@ -179,13 +179,13 @@ public extension String {
         return "".join([self, string.times(n)])
     }
     
-    func slugify() -> String {
-        let slugCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-")
+    func slugify(withSeparator separator: Character = "-") -> String {
+        let slugCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\(separator)")
         return latinize()
             .lowercaseString
             .componentsSeparatedByCharactersInSet(slugCharacterSet.invertedSet)
             .filter { $0 != "" }
-            .joinWithSeparator("-")
+            .joinWithSeparator(String(separator))
     }
     
     func split(separator: Character) -> [String] {

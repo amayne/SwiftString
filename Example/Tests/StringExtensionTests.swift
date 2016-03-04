@@ -35,6 +35,10 @@ class SwiftStringTests: XCTestCase {
         assertThat("foobar".chompRight("foo") == "bar")
     }
     
+    func testClean() {
+        assertThat("thisoneistwoathreetest".clean(with: " ", allOf: "one", "two", "three") == "this is a test")
+    }
+    
     func testCollapseWhitespace() {
         assertThat("  String   \t libraries are   \n\n\t fun\n!  ".collapseWhitespace() == "String libraries are fun !")
     }
@@ -97,6 +101,7 @@ class SwiftStringTests: XCTestCase {
     }
     
     func testIsEmpty() {
+        assertThat("".isEmpty() == true)
         assertThat(" ".isEmpty() == true)
         assertThat("\t\t\t ".isEmpty() == true)
         assertThat("\n\n".isEmpty() == true)
@@ -128,6 +133,8 @@ class SwiftStringTests: XCTestCase {
         assertThat("test".lines() == ["test"])
         assertThat("test\nsentence".lines() == ["test", "sentence"])
         assertThat("test \nsentence".lines() == ["test ", "sentence"])
+        //Test Carriage return instead of just newlines
+        assertThat("test\rsentence".lines() == ["test", "sentence"])
     }
 
     func testPad() {
@@ -227,6 +234,7 @@ class SwiftStringTests: XCTestCase {
     
     func testSlugify() {
         assertThat("Global Thermonuclear Warfare".slugify() == "global-thermonuclear-warfare")
+        assertThat("Global Thermonuclear Warfare".slugify(withSeparator: "_") == "global_thermonuclear_warfare")
         assertThat("Crème brûlée".slugify() == "creme-brulee")
     }
     
