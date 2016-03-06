@@ -148,7 +148,7 @@ public extension String {
         return false
     }
     
-    func join<S : SequenceType>(elements: S) -> String {
+    func join<S: SequenceType>(elements: S) -> String {
         return elements.map{String($0)}.joinWithSeparator(self)
     }
     
@@ -245,7 +245,7 @@ public extension String {
         return dateFormatter.dateFromString(self)
     }
     
-    func toDateTime(format : String = "yyyy-MM-dd HH:mm:ss") -> NSDate? {
+    func toDateTime(format: String = "yyyy-MM-dd HH:mm:ss") -> NSDate? {
         return toDate(format)
     }
     
@@ -260,7 +260,6 @@ public extension String {
         if let range = rangeOfCharacterFromSet(NSCharacterSet.whitespaceAndNewlineCharacterSet().invertedSet, options: NSStringCompareOptions.BackwardsSearch) {
             return self[startIndex..<range.endIndex]
         }
-        
         return self
     }
     
@@ -272,7 +271,6 @@ public extension String {
         get {
             let startIndex = self.startIndex.advancedBy(r.startIndex)
             let endIndex = self.startIndex.advancedBy(r.endIndex - r.startIndex)
-            
             return self[startIndex..<endIndex]
         }
     }
@@ -288,7 +286,5 @@ public extension String {
             let index = self.startIndex.advancedBy(i)
             return self[index]
         }
-    }
-    
-    
+    }    
 }
