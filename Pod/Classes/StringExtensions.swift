@@ -158,7 +158,6 @@ public extension String {
     
     func lines() -> [String] {
         return self.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
-//        return characters.split{$0 == "\n"}.map(String.init)
     }
     
     var length: Int {
