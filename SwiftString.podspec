@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SwiftString"
-  s.version          = "0.5"
+  s.version          = "0.5.1"
   s.summary          = "A lightweight string extension for Swift"
 
   s.description      = <<-DESC
@@ -17,7 +17,4 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'SwiftString' => ['Pod/Assets/*.png']
-  }
 end
