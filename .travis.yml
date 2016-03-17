@@ -1,15 +1,22 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
 language: objective-c
-osx_image: xcode7.1
-cache: cocoapods
-podfile: Example/Podfile
+osx_image: xcode7.2
+xcode_workspace: SwiftString.xcworkspace
+xcode_scheme: SwiftString
+xcode_sdk: iphonesimulator9.2
+env:
+  global:
+  - FRAMEWORK_NAME=SwiftString
 before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod install --project-directory=Example
-
-script:
-- set -o pipefail && xcodebuild test -workspace Example/SwiftString.xcworkspace -scheme SwiftString-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+- brew update
+- brew install carthage
+before_script: 
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: QRcGJcgs54ZQTTmb5OSfbrqii7c+qJk9cwXjFyxWkgBK2xxnVN1s3Lb+rx403g6zhTKpCTgdtJaQQ9x90axpJIofS8WV14QQjtcYPzjZsaDyUL2oTFM8Nq+GZlpCGYrvHpMZTh+ZRYmKDRRj8Ni/USN4g70jwLcmTclKtOrbaIeJmFwdbyN94KzLmm7xjJqtxrE/8h5Wg/hKqRtMrCMStAOtbawvLItDtsmhWYi+6CqaZ5T9sQVlclUs4DVA8d6r8Lm65Orq/jEkXWYuUpddqUoUb7xArJ+ghTTx5+g0QxfbH28IEu9Z3Zq9YAY+H26lk7dmnXO6gZ1n4UnxeqozFf2K8e2L7dePFrmGOt+sL45CC36mzfHn0blyDespJlywFRB9DJA5JhIdEFVl8rxQXDLMVJOP9uhDGgjFjoS8XsUvwvoVNMuWjyIxOcl3MlRlgzIUZE1swIMmBA+tCUffwMfyy0hncNy5lfJ+bbN7T8WavUWwMCdvtsmr9N3YOT3ducxhm2s13sKkClkqzHPpzOTWdwHSF6En1XLEwqY5ebQtJFLWqizyIJUmjIW7C+rA17hSBFQciqaTOwdCjPpQbwzed9/rU9kYkNkna0XqOnj5lAIJv9ffs0RMYYWoz1I5/lHkZpliTJaERiC5ej0xBSPMQ1IMO3Rc2Qu8bXJ+sFE=
+  file: ".travis.yml"
+  on:
+    repo: catalandres/SwiftString
