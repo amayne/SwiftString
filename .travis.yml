@@ -8,7 +8,7 @@ env:
   - FRAMEWORK_NAME=SwiftString
 before_install:
 - brew update
-# - brew install carthage
+- brew upgrade carthage
 before_script: 
 before_deploy:
 - carthage build --no-skip-current
