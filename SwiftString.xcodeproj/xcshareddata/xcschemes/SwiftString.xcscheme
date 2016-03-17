@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "412992861C9A0B1300E0EBEA"
+               BlueprintIdentifier = "41ABDB431C9A596B0096238C"
                BuildableName = "SwiftString.framework"
                BlueprintName = "SwiftString"
                ReferencedContainer = "container:SwiftString.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "412992901C9A0B1400E0EBEA"
+               BlueprintIdentifier = "41ABDB4D1C9A596B0096238C"
                BuildableName = "SwiftStringTests.xctest"
                BlueprintName = "SwiftStringTests"
                ReferencedContainer = "container:SwiftString.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "412992861C9A0B1300E0EBEA"
+            BlueprintIdentifier = "41ABDB431C9A596B0096238C"
             BuildableName = "SwiftString.framework"
             BlueprintName = "SwiftString"
             ReferencedContainer = "container:SwiftString.xcodeproj">
@@ -64,7 +64,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "412992861C9A0B1300E0EBEA"
+            BlueprintIdentifier = "41ABDB431C9A596B0096238C"
             BuildableName = "SwiftString.framework"
             BlueprintName = "SwiftString"
             ReferencedContainer = "container:SwiftString.xcodeproj">
@@ -82,7 +82,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "412992861C9A0B1300E0EBEA"
+            BlueprintIdentifier = "41ABDB431C9A596B0096238C"
             BuildableName = "SwiftString.framework"
             BlueprintName = "SwiftString"
             ReferencedContainer = "container:SwiftString.xcodeproj">
