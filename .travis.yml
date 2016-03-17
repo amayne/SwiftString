@@ -17,6 +17,8 @@ deploy:
   provider: releases
   api_key:
     secure: QRcGJcgs54ZQTTmb5OSfbrqii7c+qJk9cwXjFyxWkgBK2xxnVN1s3Lb+rx403g6zhTKpCTgdtJaQQ9x90axpJIofS8WV14QQjtcYPzjZsaDyUL2oTFM8Nq+GZlpCGYrvHpMZTh+ZRYmKDRRj8Ni/USN4g70jwLcmTclKtOrbaIeJmFwdbyN94KzLmm7xjJqtxrE/8h5Wg/hKqRtMrCMStAOtbawvLItDtsmhWYi+6CqaZ5T9sQVlclUs4DVA8d6r8Lm65Orq/jEkXWYuUpddqUoUb7xArJ+ghTTx5+g0QxfbH28IEu9Z3Zq9YAY+H26lk7dmnXO6gZ1n4UnxeqozFf2K8e2L7dePFrmGOt+sL45CC36mzfHn0blyDespJlywFRB9DJA5JhIdEFVl8rxQXDLMVJOP9uhDGgjFjoS8XsUvwvoVNMuWjyIxOcl3MlRlgzIUZE1swIMmBA+tCUffwMfyy0hncNy5lfJ+bbN7T8WavUWwMCdvtsmr9N3YOT3ducxhm2s13sKkClkqzHPpzOTWdwHSF6En1XLEwqY5ebQtJFLWqizyIJUmjIW7C+rA17hSBFQciqaTOwdCjPpQbwzed9/rU9kYkNkna0XqOnj5lAIJv9ffs0RMYYWoz1I5/lHkZpliTJaERiC5ej0xBSPMQ1IMO3Rc2Qu8bXJ+sFE=
-  file: ".travis.yml"
+  file: "SwiftString.framework.zip"
+  skip_cleanup: true
   on:
     repo: catalandres/SwiftString
+    tags: true
