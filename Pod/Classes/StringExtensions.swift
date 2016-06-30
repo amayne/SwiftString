@@ -142,7 +142,7 @@ public extension String {
     }
     
     func isNumeric() -> Bool {
-        if let _ = NSNumberFormatter().numberFromString(self) {
+        if let _ = defaultNumberFormatter().numberFromString(self) {
             return true
         }
         return false
@@ -208,22 +208,22 @@ public extension String {
     }
     
     func toFloat() -> Float? {
-        if let number = NSNumberFormatter().numberFromString(self) {
+        if let number = defaultNumberFormatter().numberFromString(self) {
             return number.floatValue
         }
         return nil
     }
     
     func toInt() -> Int? {
-        if let number = NSNumberFormatter().numberFromString(self) {
+        if let number = defaultNumberFormatter().numberFromString(self) {
             return number.integerValue
         }
         return nil
     }
     
     func toDouble(locale: NSLocale = NSLocale.systemLocale()) -> Double? {
-        let nf = NSNumberFormatter()
-        nf.locale = locale
+        let nf = localeNumberFormatter(locale)
+
         if let number = nf.numberFromString(self) {
             return number.doubleValue
         }
@@ -239,9 +239,7 @@ public extension String {
     }
     
     func toDate(format: String = "yyyy-MM-dd") -> NSDate? {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.dateFromString(self)
+        return dateFormatter(format).dateFromString(self)
     }
     
     func toDateTime(format: String = "yyyy-MM-dd HH:mm:ss") -> NSDate? {
@@ -286,4 +284,54 @@ public extension String {
             return self[index]
         }
     }    
+}
+
+private enum ThreadLocalIdentifier {
+    case DateFormatter(String)
+
+    case DefaultNumberFormatter
+    case LocaleNumberFormatter(NSLocale)
+
+    var objcDictKey: String {
+        switch self {
+        case .DateFormatter(let format):
+            return "SS\(self)\(format)"
+        case .LocaleNumberFormatter(let l):
+            return "SS\(self)\(l.localeIdentifier)"
+        default:
+            return "SS\(self)"
+        }
+    }
+}
+
+private func threadLocalInstance<T: AnyObject>(identifier: ThreadLocalIdentifier, @autoclosure initialValue: () -> T) -> T {
+    let storage = NSThread.currentThread().threadDictionary
+    let k = identifier.objcDictKey
+
+    let instance: T = storage[k] as? T ?? initialValue()
+    if storage[k] == nil {
+        storage[k] = instance
+    }
+
+    return instance
+}
+
+private func dateFormatter(format: String) -> NSDateFormatter {
+    return threadLocalInstance(.DateFormatter(format), initialValue: {
+        let df = NSDateFormatter()
+        df.dateFormat = format
+        return df
+    }())
+}
+
+private func defaultNumberFormatter() -> NSNumberFormatter {
+    return threadLocalInstance(.DefaultNumberFormatter, initialValue: NSNumberFormatter())
+}
+
+private func localeNumberFormatter(locale: NSLocale) -> NSNumberFormatter {
+    return threadLocalInstance(.LocaleNumberFormatter(locale), initialValue: {
+        let nf = NSNumberFormatter()
+        nf.locale = locale
+        return nf
+    }())
 }
