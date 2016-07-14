@@ -267,7 +267,7 @@ public extension String {
     subscript(r: Range<Int>) -> String {
         get {
             let startIndex = self.startIndex.advancedBy(r.startIndex)
-            let endIndex = self.startIndex.advancedBy(r.endIndex - r.startIndex)
+            let endIndex = self.startIndex.advancedBy(r.endIndex)
             return self[startIndex..<endIndex]
         }
     }
