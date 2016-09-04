@@ -1,11 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'SwiftString_Example', :exclusive => true do
+target 'SwiftString_Example' do
   pod 'SwiftString', :path => '../'
 end
 
-target 'SwiftString_Tests', :exclusive => true do
+target 'SwiftString_Tests' do
   pod 'SwiftString', :path => '../'
   pod 'SwiftHamcrest'
 end

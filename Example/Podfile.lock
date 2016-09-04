@@ -1,6 +1,6 @@
 PODS:
   - SwiftHamcrest (0.3)
-  - SwiftString (0.1)
+  - SwiftString (0.5.1)
 
 DEPENDENCIES:
   - SwiftHamcrest
@@ -12,6 +12,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SwiftHamcrest: 652d2e197df0957b532f1c66a9112bc809030965
-  SwiftString: 0a32494e59f63c337ad0b2b5fa8cdba5c536484a
+  SwiftString: 55c189fc54f3f5e3030a355155be47c41852bcc6
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: beb17e7b45bae824f7ac6b8fe7ae5ec34ab8d34c
+
+COCOAPODS: 1.0.1
