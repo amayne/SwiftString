@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		_LinkFileRef_SwiftString_via_SwiftStringTests /* SwiftString.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SwiftString" /* SwiftString.framework */; };
-		"__src_cc_ref_Sources/String+HTML.swift" /* String+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Sources/String+HTML.swift" /* String+HTML.swift */; };
+		"__src_cc_ref_Sources/String+HTML.swift" /* StringHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Sources/String+HTML.swift" /* StringHTML.swift */; };
 		__src_cc_ref_Sources/StringExtensions.swift /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/StringExtensions.swift /* StringExtensions.swift */; };
 		__src_cc_ref_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift */; };
 /* End PBXBuildFile section */
@@ -24,9 +24,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		__PBXFileRef_Example /* Example */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Example; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Sources/String+HTML.swift" /* String+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+HTML.swift"; path = "Sources/String+HTML.swift"; sourceTree = "<group>"; };
+		"__PBXFileRef_Sources/String+HTML.swift" /* StringHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringHTML.swift; path = Sources/StringHTML.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/StringExtensions.swift /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Sources/StringExtensions.swift; sourceTree = "<group>"; };
 		__PBXFileRef_SwiftString.xcodeproj/Configs/Debug.xcconfig /* SwiftString.xcodeproj/Configs/Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SwiftString.xcodeproj/Configs/Debug.xcconfig; sourceTree = "<group>"; };
 		__PBXFileRef_SwiftString.xcodeproj/Configs/Project.xcconfig /* SwiftString.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SwiftString.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
@@ -69,7 +68,6 @@
 				__PBXFileRef_Package.swift /* Package.swift */,
 				"_____Configs_" /* Configs */,
 				"_____Sources_" /* Sources */,
-				__PBXFileRef_Example /* Example */,
 				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);
@@ -105,7 +103,7 @@
 		"_______Group_SwiftString" /* SwiftString */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Sources/String+HTML.swift" /* String+HTML.swift */,
+				"__PBXFileRef_Sources/String+HTML.swift" /* StringHTML.swift */,
 				__PBXFileRef_Sources/StringExtensions.swift /* StringExtensions.swift */,
 			);
 			name = SwiftString;
@@ -202,7 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Sources/String+HTML.swift" /* String+HTML.swift in Sources */,
+				"__src_cc_ref_Sources/String+HTML.swift" /* StringHTML.swift in Sources */,
 				__src_cc_ref_Sources/StringExtensions.swift /* StringExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
