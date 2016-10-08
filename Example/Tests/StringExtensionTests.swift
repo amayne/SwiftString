@@ -73,6 +73,13 @@ class SwiftStringTests: XCTestCase {
         assertThat("hello".indexOf("lo"), presentAnd(equalTo(3)))
         assertThat("hello".indexOf("world"), nilValue())
     }
+
+    func testRindexOf() {
+        assertThat("hello".rindexOf("hell"), presentAnd(equalTo(0)))
+        assertThat("helloll".rindexOf("ll"), presentAnd(equalTo(5)))
+        assertThat("hellolloll".rindexOf("ll"), presentAnd(equalTo(8)))
+        assertThat("hello".rindexOf("world"), nilValue())
+    }
     
     func testInitials() {
         assertThat("First".initials() == "F")
