@@ -112,6 +112,13 @@ public extension String {
         }
         return nil
     }
+
+    func rindexOf(substring: String) -> Int? {
+        if let range = rangeOfString(substring, options: .BackwardsSearch) {
+            return startIndex.distanceTo(range.startIndex)
+        }
+        return nil
+    }
     
     func initials() -> String {
         let words = self.componentsSeparatedByString(" ")

@@ -113,6 +113,13 @@ import SwiftString
 "hello".indexOf("world") // nil
 ```
 
+**rindexOf(substring)**
+```swift
+"hello".rindexOf("hell"), // 0
+"helloll".rindexOf("ll"), // 5
+"hello".rindexOf("world") // nil
+```
+
 **initials()**
 ```swift
 "First".initials(), // "F"
