@@ -30,8 +30,8 @@ public extension String {
         let source = clean(with: " ", allOf: "-", "_")
         if source.characters.contains(" ") {
 			let first = self[self.startIndex...self.index(after: startIndex)] //source.substringToIndex(source.index(after: startIndex))
-			let strip = source.capitalized.replacingOccurrences(of: " ", with: "")
-            let cammel = String(format: "%@", strip)
+			let cammel = source.capitalized.replacingOccurrences(of: " ", with: "")
+//            let cammel = String(format: "%@", strip)
             let rest = String(cammel.characters.dropFirst())
             return "\(first)\(rest)"
         } else {
@@ -300,14 +300,14 @@ private enum ThreadLocalIdentifier {
     case dateFormatter(String)
 
     case defaultNumberFormatter
-    case localeNumberFormatter(NSLocale)
+    case localeNumberFormatter(Locale)
 
     var objcDictKey: String {
         switch self {
         case .dateFormatter(var format):
             return "SS\(self)\(format)"
         case .localeNumberFormatter(let l):
-            return "SS\(self)\(l.localeIdentifier)"
+            return "SS\(self)\(l.identifier)"
         default:
             return "SS\(self)"
         }
@@ -315,7 +315,7 @@ private enum ThreadLocalIdentifier {
 }
 
 private func threadLocalInstance<T: AnyObject>(_ identifier: ThreadLocalIdentifier, initialValue: @autoclosure () -> T) -> T {
-    let storage = Thread.current.threadDictionary
+    var storage = Thread.current.threadDictionary
     let k = identifier.objcDictKey
 
     let instance: T = storage[k] as? T ?? initialValue()
@@ -339,7 +339,7 @@ private func defaultNumberFormatter() -> NumberFormatter {
 }
 
 private func localeNumberFormatter(_ locale: Locale) -> NumberFormatter {
-    return threadLocalInstance(.localeNumberFormatter(locale as NSLocale), initialValue: {
+    return threadLocalInstance(.localeNumberFormatter(locale), initialValue: {
         let nf = NumberFormatter()
         nf.locale = locale
         return nf
