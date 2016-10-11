@@ -30,7 +30,8 @@ public extension String {
         let source = clean(with: " ", allOf: "-", "_")
         if source.characters.contains(" ") {
 			let first = self[self.startIndex...self.index(after: startIndex)] //source.substringToIndex(source.index(after: startIndex))
-            let cammel = NSString(format: "%@", (source as NSString).capitalized.replacingOccurrences(of: " ", with: "")) as String
+			let strip = source.capitalized.replacingOccurrences(of: " ", with: "")
+            let cammel = String(format: "%@", strip)
             let rest = String(cammel.characters.dropFirst())
             return "\(first)\(rest)"
         } else {
@@ -234,9 +235,19 @@ public extension String {
         
     func toBool() -> Bool? {
         let trimmed = self.trimmed().lowercased()
-		return (trimmed as NSString).boolValue
+		if Int(trimmed) != 0 {
+			return true
+		}
+		switch trimmed {
+		case "true", "yes", "1":
+			return true
+		case "false", "no", "0":
+			return false
+		default:
+			return false
+		}
     }
-    
+
     func toDate(_ format: String = "yyyy-MM-dd") -> Date? {
         return dateFormatter(format).date(from: self) as Date?
     }
@@ -293,7 +304,7 @@ private enum ThreadLocalIdentifier {
 
     var objcDictKey: String {
         switch self {
-        case .dateFormatter(let format):
+        case .dateFormatter(var format):
             return "SS\(self)\(format)"
         case .localeNumberFormatter(let l):
             return "SS\(self)\(l.localeIdentifier)"
@@ -327,10 +338,10 @@ private func defaultNumberFormatter() -> NumberFormatter {
     return threadLocalInstance(.defaultNumberFormatter, initialValue: NumberFormatter())
 }
 
-private func localeNumberFormatter(_ locale: NSLocale) -> NumberFormatter {
-    return threadLocalInstance(.localeNumberFormatter(locale), initialValue: {
+private func localeNumberFormatter(_ locale: Locale) -> NumberFormatter {
+    return threadLocalInstance(.localeNumberFormatter(locale as NSLocale), initialValue: {
         let nf = NumberFormatter()
-        nf.locale = locale as Locale!
+        nf.locale = locale
         return nf
     }())
 }
