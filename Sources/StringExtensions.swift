@@ -304,7 +304,7 @@ private enum ThreadLocalIdentifier {
 
     var objcDictKey: String {
         switch self {
-        case .dateFormatter(var format):
+        case .dateFormatter(let format):
             return "SS\(self)\(format)"
         case .localeNumberFormatter(let l):
             return "SS\(self)\(l.identifier)"
@@ -315,7 +315,7 @@ private enum ThreadLocalIdentifier {
 }
 
 private func threadLocalInstance<T: AnyObject>(_ identifier: ThreadLocalIdentifier, initialValue: @autoclosure () -> T) -> T {
-    var storage = Thread.current.threadDictionary
+    let storage = Thread.current.threadDictionary
     let k = identifier.objcDictKey
 
     let instance: T = storage[k] as? T ?? initialValue()
@@ -346,7 +346,7 @@ private func localeNumberFormatter(_ locale: Locale) -> NumberFormatter {
     }())
 }
 
-extension String {
+public extension String {
 	func isValidEmail() -> Bool {
 		let regex = try? NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
 		return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.characters.count)) != nil
