@@ -345,3 +345,10 @@ private func localeNumberFormatter(_ locale: Locale) -> NumberFormatter {
         return nf
     }())
 }
+
+extension String {
+	func isValidEmail() -> Bool {
+		let regex = try? NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+		return regex?.firstMatch(in: self, options: [], range: NSMakeRange(0, self.characters.count)) != nil
+	}
+}
