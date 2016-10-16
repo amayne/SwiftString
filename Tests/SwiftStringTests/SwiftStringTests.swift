@@ -5,6 +5,7 @@ import XCTest
     import Darwin
 #endif
 @testable import SwiftString
+
 class SwiftStringTests: XCTestCase {
     override func setUp() {
         super.setUp()
@@ -241,4 +242,45 @@ class SwiftStringTests: XCTestCase {
 		let s = "The stupid brown fox"
 		XCTAssertEqual(s.substring(4,length: 9), "stupid br", "trimmed is invalid")
 	}
+
+	static var allTests : [(String, (SwiftStringTests) -> () throws -> Void)] {
+		return [
+			("testBetween", testBetween),
+			("testCamelize", testCamelize),
+			("testCapitalize", testCapitalize),
+			("testChompLeft", testChompLeft),
+			("testChompRight", testChompRight),
+			("testcollapseWhitespace", testcollapseWhitespace),
+			("testclean", testclean),
+			("testcount", testcount),
+			("testendsWith", testendsWith),
+			("testensureLeft", testensureLeft),
+			("testensureRight", testensureRight),
+			("testindexOf", testindexOf),
+			("testinitials", testinitials),
+			("testinitialsFirstAndLast", testinitialsFirstAndLast),
+			("testisAlpha", testisAlpha),
+			("testisAlphaNumeric", testisAlphaNumeric),
+			("testisEmpty", testisEmpty),
+			("testisNumeric", testisNumeric),
+			("testlatinize", testlatinize),
+			("testlines", testlines),
+			("testlength", testlength),
+			("testpad", testpad),
+			("testpadLeft", testpadLeft),
+			("testpadRight", testpadRight),
+			("testslugify", testslugify),
+			("testsplit", testsplit),
+			("teststartsWith", teststartsWith),
+			("teststripPunctuation", teststripPunctuation),
+			("testtoFloat", testtoFloat),
+			("testtoInt", testtoInt),
+			("testtoBool", testtoBool),
+			("testtrimmedLeft", testtrimmedLeft),
+			("testtrimmedRight", testtrimmedRight),
+			("testtrimmed", testtrimmed),
+			("testsubstring", testsubstring)
+		]
+	}
+
 }
