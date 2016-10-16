@@ -315,7 +315,7 @@ private enum ThreadLocalIdentifier {
 }
 
 private func threadLocalInstance<T: AnyObject>(_ identifier: ThreadLocalIdentifier, initialValue: @autoclosure () -> T) -> T {
-    let storage = Thread.current.threadDictionary
+    var storage = Thread.current.threadDictionary
     let k = identifier.objcDictKey
 
     let instance: T = storage[k] as? T ?? initialValue()
