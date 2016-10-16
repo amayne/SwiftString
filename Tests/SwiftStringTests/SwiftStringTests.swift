@@ -203,6 +203,7 @@ class SwiftStringTests: XCTestCase {
 		let s3 = "2"
 		XCTAssertEqual(s3.toBool(), true, "toBool is invalid")
 	}
+	#if !os(Linux)
 	//toDate
 	func testtoDate() {
 		let s = "2016-03-01"
@@ -219,6 +220,7 @@ class SwiftStringTests: XCTestCase {
 		let someDateTime = formatter.date(from: "2016-03-01 18:31:00")
 		XCTAssertEqual(s.toDateTime(),someDateTime, "toDateTime is invalid")
 	}
+	#endif
 	//trimmedLeft
 	func testtrimmedLeft() {
 		let s = " The stupid brown fox "
