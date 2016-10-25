@@ -300,14 +300,14 @@ public extension String {
         }
     }
 
-	/// get the left part of the string before the index
-	func left(_ range:Range<String.Index>?) -> String {
-		return self.substring(to: (range?.lowerBound)!)
-	}
-	/// get the right part of the string after the index
-	func right(_ range:Range<String.Index>?) -> String {
-		return self.substring(from: self.index((range?.lowerBound)!, offsetBy:1))
-	}
+//	/// get the left part of the string before the index
+//	func left(_ range:Range<String.Index>?) -> String {
+//		return self.substring(to: (range?.lowerBound)!)
+//	}
+//	/// get the right part of the string after the index
+//	func right(_ range:Range<String.Index>?) -> String {
+//		return self.substring(from: self.index((range?.lowerBound)!, offsetBy:1))
+//	}
 
 }
 
@@ -330,7 +330,11 @@ private enum ThreadLocalIdentifier {
 }
 
 private func threadLocalInstance<T: AnyObject>(_ identifier: ThreadLocalIdentifier, initialValue: @autoclosure () -> T) -> T {
-    var storage = Thread.current.threadDictionary
+	#if os(Linux)
+		var storage = Thread.current.threadDictionary
+	#else
+		let storage = Thread.current.threadDictionary
+	#endif
     let k = identifier.objcDictKey
 
     let instance: T = storage[k] as? T ?? initialValue()
