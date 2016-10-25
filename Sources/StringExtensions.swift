@@ -298,7 +298,17 @@ public extension String {
             let index = self.characters.index(self.startIndex, offsetBy: i)
             return self[index]
         }
-    }    
+    }
+
+	/// get the left part of the string before the index
+	func left(_ range:Range<String.Index>?) -> String {
+		return self.substring(to: (range?.lowerBound)!)
+	}
+	/// get the right part of the string after the index
+	func right(_ range:Range<String.Index>?) -> String {
+		return self.substring(from: self.index((range?.lowerBound)!, offsetBy:1))
+	}
+
 }
 
 private enum ThreadLocalIdentifier {
