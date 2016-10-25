@@ -1,0 +1,340 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		_LinkFileRef_SwiftString_via_SwiftStringTests /* SwiftString.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SwiftString" /* SwiftString.framework */; };
+		"__src_cc_ref_Sources/String+HTML.swift" /* StringHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Sources/String+HTML.swift" /* StringHTML.swift */; };
+		__src_cc_ref_Sources/StringExtensions.swift /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/StringExtensions.swift /* StringExtensions.swift */; };
+		__src_cc_ref_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E0AD59D81D91B4DD00DC93F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_SwiftString";
+			remoteInfo = SwiftString;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Sources/String+HTML.swift" /* StringHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringHTML.swift; path = Sources/StringHTML.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/StringExtensions.swift /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Sources/StringExtensions.swift; sourceTree = "<group>"; };
+		__PBXFileRef_SwiftString.xcodeproj/Configs/Debug.xcconfig /* SwiftString.xcodeproj/Configs/Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SwiftString.xcodeproj/Configs/Debug.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_SwiftString.xcodeproj/Configs/Project.xcconfig /* SwiftString.xcodeproj/Configs/Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SwiftString.xcodeproj/Configs/Project.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_SwiftString.xcodeproj/Configs/Release.xcconfig /* SwiftString.xcodeproj/Configs/Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SwiftString.xcodeproj/Configs/Release.xcconfig; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftStringTests.swift; path = Tests/SwiftStringTests/SwiftStringTests.swift; sourceTree = "<group>"; };
+		"_____Product_SwiftString" /* SwiftString.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftString.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_SwiftStringTests" /* SwiftStringTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = SwiftStringTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		"___LinkPhase_SwiftString" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_SwiftStringTests" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_SwiftString_via_SwiftStringTests /* SwiftString.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		TestProducts_ /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				"_____Product_SwiftStringTests" /* SwiftStringTests.xctest */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		"___RootGroup_" = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Package.swift /* Package.swift */,
+				"_____Configs_" /* Configs */,
+				"_____Sources_" /* Sources */,
+				"_______Tests_" /* Tests */,
+				"____Products_" /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		"____Products_" /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				TestProducts_ /* Tests */,
+				"_____Product_SwiftString" /* SwiftString.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		"_____Configs_" /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_SwiftString.xcodeproj/Configs/Project.xcconfig /* SwiftString.xcodeproj/Configs/Project.xcconfig */,
+				__PBXFileRef_SwiftString.xcodeproj/Configs/Debug.xcconfig /* SwiftString.xcodeproj/Configs/Debug.xcconfig */,
+				__PBXFileRef_SwiftString.xcodeproj/Configs/Release.xcconfig /* SwiftString.xcodeproj/Configs/Release.xcconfig */,
+			);
+			name = Configs;
+			sourceTree = "<group>";
+		};
+		"_____Sources_" /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_SwiftString" /* SwiftString */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		"_______Group_SwiftString" /* SwiftString */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Sources/String+HTML.swift" /* StringHTML.swift */,
+				__PBXFileRef_Sources/StringExtensions.swift /* StringExtensions.swift */,
+			);
+			name = SwiftString;
+			sourceTree = "<group>";
+		};
+		"_______Group_SwiftStringTests" /* SwiftStringTests */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift */,
+			);
+			name = SwiftStringTests;
+			sourceTree = "<group>";
+		};
+		"_______Tests_" /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				"_______Group_SwiftStringTests" /* SwiftStringTests */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"______Target_SwiftString" /* SwiftString */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_SwiftString" /* Build configuration list for PBXNativeTarget "SwiftString" */;
+			buildPhases = (
+				CompilePhase_SwiftString /* Sources */,
+				"___LinkPhase_SwiftString" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftString;
+			productName = SwiftString;
+			productReference = "_____Product_SwiftString" /* SwiftString.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"______Target_SwiftStringTests" /* SwiftStringTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_SwiftStringTests" /* Build configuration list for PBXNativeTarget "SwiftStringTests" */;
+			buildPhases = (
+				CompilePhase_SwiftStringTests /* Sources */,
+				"___LinkPhase_SwiftStringTests" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_SwiftString /* PBXTargetDependency */,
+			);
+			name = SwiftStringTests;
+			productName = SwiftStringTests;
+			productReference = "_____Product_SwiftStringTests" /* SwiftStringTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		__RootObject_ /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+				TargetAttributes = {
+					"______Target_SwiftString" = {
+						LastSwiftMigration = 0800;
+					};
+					"______Target_SwiftStringTests" = {
+						LastSwiftMigration = 0800;
+					};
+				};
+			};
+			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "SwiftString" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = "___RootGroup_";
+			productRefGroup = "____Products_" /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"______Target_SwiftString" /* SwiftString */,
+				"______Target_SwiftStringTests" /* SwiftStringTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CompilePhase_SwiftString /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Sources/String+HTML.swift" /* StringHTML.swift in Sources */,
+				__src_cc_ref_Sources/StringExtensions.swift /* StringExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_SwiftStringTests /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Tests/SwiftStringTests/SwiftStringTests.swift /* SwiftStringTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		__Dependency_SwiftString /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_SwiftString" /* SwiftString */;
+			targetProxy = E0AD59D81D91B4DD00DC93F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		_ReleaseConf_SwiftString /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = SwiftString.xcodeproj/SwiftString_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "\"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx\"";
+				LIBRARY_SEARCH_PATHS = "\"$(PROJECT_TEMP_DIR)/SymlinkLibs/\"";
+				OTHER_LDFLAGS = "\"$(inherited)\"";
+				OTHER_SWIFT_FLAGS = "\"$(inherited)\"";
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftString;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		_ReleaseConf_SwiftStringTests /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = SwiftString.xcodeproj/SwiftStringTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(PROJECT_TEMP_DIR)/SymlinkLibs/\"";
+				OTHER_LDFLAGS = "\"$(inherited)\"";
+				OTHER_SWIFT_FLAGS = "\"$(inherited)\"";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		"___DebugConf_SwiftString" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = SwiftString.xcodeproj/SwiftString_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "\"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx\"";
+				LIBRARY_SEARCH_PATHS = "\"$(PROJECT_TEMP_DIR)/SymlinkLibs/\"";
+				OTHER_LDFLAGS = "\"$(inherited)\"";
+				OTHER_SWIFT_FLAGS = "\"$(inherited)\"";
+				PRODUCT_BUNDLE_IDENTIFIER = SwiftString;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"___DebugConf_SwiftStringTests" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				INFOPLIST_FILE = SwiftString.xcodeproj/SwiftStringTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(PROJECT_TEMP_DIR)/SymlinkLibs/\"";
+				OTHER_LDFLAGS = "\"$(inherited)\"";
+				OTHER_SWIFT_FLAGS = "\"$(inherited)\"";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		"_____Release_" /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_SwiftString.xcodeproj/Configs/Release.xcconfig /* SwiftString.xcodeproj/Configs/Release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		"_______Debug_" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = __PBXFileRef_SwiftString.xcodeproj/Configs/Debug.xcconfig /* SwiftString.xcodeproj/Configs/Debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		"___RootConfs_" /* Build configuration list for PBXProject "SwiftString" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"_______Debug_" /* Debug */,
+				"_____Release_" /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_SwiftString" /* Build configuration list for PBXNativeTarget "SwiftString" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_SwiftString" /* Debug */,
+				_ReleaseConf_SwiftString /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_SwiftStringTests" /* Build configuration list for PBXNativeTarget "SwiftStringTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_SwiftStringTests" /* Debug */,
+				_ReleaseConf_SwiftStringTests /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = __RootObject_ /* Project object */;
+}

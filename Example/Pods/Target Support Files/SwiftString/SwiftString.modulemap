@@ -1,0 +1,6 @@
+framework module SwiftString {
+  umbrella header "SwiftString-umbrella.h"
+
+  export *
+  module * { export * }
+}

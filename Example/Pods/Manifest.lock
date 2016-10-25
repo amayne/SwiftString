@@ -1,0 +1,16 @@
+PODS:
+  - SwiftString (0.5.1)
+
+DEPENDENCIES:
+  - SwiftString (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftString:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftString: 55c189fc54f3f5e3030a355155be47c41852bcc6
+
+PODFILE CHECKSUM: a863f0519f1b58f0a579f1a036655b9815d61848
+
+COCOAPODS: 1.0.1
