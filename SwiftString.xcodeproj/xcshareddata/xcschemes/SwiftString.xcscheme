@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "9999"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "SwiftString_Example.app"
-               BlueprintName = "SwiftString_Example"
-               ReferencedContainer = "container:SwiftString.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SwiftString_Tests.xctest"
-               BlueprintName = "SwiftString_Tests"
+               BlueprintIdentifier = "______Target_SwiftString"
+               BuildableName = "SwiftString.framework"
+               BlueprintName = "SwiftString"
                ReferencedContainer = "container:SwiftString.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,22 +32,13 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SwiftString_Tests.xctest"
-               BlueprintName = "SwiftString_Tests"
+               BlueprintIdentifier = "______Target_SwiftStringTests"
+               BuildableName = "SwiftStringTests.xctest"
+               BlueprintName = "SwiftStringTests"
                ReferencedContainer = "container:SwiftString.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SwiftString_Example.app"
-            BlueprintName = "SwiftString_Example"
-            ReferencedContainer = "container:SwiftString.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -75,16 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SwiftString_Example.app"
-            BlueprintName = "SwiftString_Example"
+            BlueprintIdentifier = "______Target_SwiftString"
+            BuildableName = "SwiftString.framework"
+            BlueprintName = "SwiftString"
             ReferencedContainer = "container:SwiftString.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -94,16 +70,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SwiftString_Example.app"
-            BlueprintName = "SwiftString_Example"
-            ReferencedContainer = "container:SwiftString.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
