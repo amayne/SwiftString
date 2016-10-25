@@ -198,7 +198,12 @@ public extension String {
             .filter { $0 != "" }
             .joined(separator: String(separator))
     }
-    
+
+	/// split the string into a string array by white spaces
+	func tokenize() -> [String] {
+		return self.components(separatedBy: .whitespaces)
+	}
+
     func split(_ separator: Character = " ") -> [String] {
         return characters.split{$0 == separator}.map(String.init)
     }
