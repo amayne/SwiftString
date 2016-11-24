@@ -266,6 +266,13 @@ import SwiftString
 "2".toDouble() // 2.0
 ```
 
+**findSubstring()**
+```swift
+"hello-world-abc".findSubstring("\\w+\\-\\w+", ignoreCase: false)
+"hello-world-abc".findSubstring("HELLO-world", ignoreCase: true)
+"hello-world-abc".findSubstring("\\d+\\-\\d+", ignoreCase: false)
+```
+
 **trimmedLeft()**
 ```swift
 "        How are you? ".trimmedLeft() // "How are you? "

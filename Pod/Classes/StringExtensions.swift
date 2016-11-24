@@ -252,6 +252,24 @@ public extension String {
     func toDateTime(format: String = "yyyy-MM-dd HH:mm:ss") -> NSDate? {
         return toDate(format)
     }
+
+    func findSubstring(regexpStr: String, ignoreCase: Bool) -> String? {
+        var regExp: NSRegularExpression
+        if ignoreCase {
+            regExp = try! NSRegularExpression(pattern: regexpStr, options: .CaseInsensitive)
+        } else {
+            regExp = try! NSRegularExpression(pattern: regexpStr, options: NSRegularExpressionOptions(rawValue: 0))
+        }
+        
+        let matches = regExp.matchesInString(self, options: NSMatchingOptions(rawValue: 0), range: NSRange.init(location: 0, length: self.characters.count))
+        if matches.count > 0 {
+            let range = matches.first!.range
+            let result = self.substring(range.location, length: range.length)
+            return result
+        } else {
+            return nil
+        }
+    }
     
     func trimmedLeft() -> String {
         if let range = rangeOfCharacterFromSet(NSCharacterSet.whitespaceAndNewlineCharacterSet().invertedSet) {

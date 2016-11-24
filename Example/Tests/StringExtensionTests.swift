@@ -174,6 +174,12 @@ class SwiftStringTests: XCTestCase {
         assertThat("hi".times(3) == "hihihi")
         assertThat(" ".times(10) == "          ")
     }
+
+    func testFindSubstring() {
+        assertThat("hello-world-abc".findSubstring("\\w+\\-\\w+", ignoreCase: false) == "hello-world")
+        assertThat("hello-world-abc".findSubstring("HELLO-world", ignoreCase: true) == "hello-world")
+        assertThat("hello-world-abc".findSubstring("\\d+\\-\\d+", ignoreCase: false) == nil)
+    }
     
     func testTrimmedLeft() {
         assertThat("        How are you? ".trimmedLeft() == "How are you? ")
