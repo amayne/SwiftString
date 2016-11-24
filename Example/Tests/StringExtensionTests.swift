@@ -73,6 +73,13 @@ class SwiftStringTests: XCTestCase {
         assertThat("hello".indexOf("lo"), presentAnd(equalTo(3)))
         assertThat("hello".indexOf("world"), nilValue())
     }
+
+    func testRindexOf() {
+        assertThat("hello".rindexOf("hell"), presentAnd(equalTo(0)))
+        assertThat("helloll".rindexOf("ll"), presentAnd(equalTo(5)))
+        assertThat("hellolloll".rindexOf("ll"), presentAnd(equalTo(8)))
+        assertThat("hello".rindexOf("world"), nilValue())
+    }
     
     func testInitials() {
         assertThat("First".initials() == "F")
@@ -166,6 +173,12 @@ class SwiftStringTests: XCTestCase {
     func testTimes() {
         assertThat("hi".times(3) == "hihihi")
         assertThat(" ".times(10) == "          ")
+    }
+
+    func testFindSubstring() {
+        assertThat("hello-world-abc".findSubstring("\\w+\\-\\w+", ignoreCase: false) == "hello-world")
+        assertThat("hello-world-abc".findSubstring("HELLO-world", ignoreCase: true) == "hello-world")
+        assertThat("hello-world-abc".findSubstring("\\d+\\-\\d+", ignoreCase: false) == nil)
     }
     
     func testTrimmedLeft() {

@@ -113,6 +113,13 @@ import SwiftString
 "hello".indexOf("world") // nil
 ```
 
+**rindexOf(substring)**
+```swift
+"hello".rindexOf("hell"), // 0
+"helloll".rindexOf("ll"), // 5
+"hello".rindexOf("world") // nil
+```
+
 **initials()**
 ```swift
 "First".initials(), // "F"
@@ -257,6 +264,13 @@ import SwiftString
 "asdwads".toDouble() // nil
 "2.00".toDouble() // 2.0
 "2".toDouble() // 2.0
+```
+
+**findSubstring()**
+```swift
+"hello-world-abc".findSubstring("\\w+\\-\\w+", ignoreCase: false)
+"hello-world-abc".findSubstring("HELLO-world", ignoreCase: true)
+"hello-world-abc".findSubstring("\\d+\\-\\d+", ignoreCase: false)
 ```
 
 **trimmedLeft()**
