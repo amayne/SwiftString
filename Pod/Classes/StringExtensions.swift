@@ -16,74 +16,75 @@ public extension String {
     ///  - returns: The string between the two bookends, or nil if the bookends cannot be found, the bookends are the same or appear contiguously.
     func between(left: String, _ right: String) -> String? {
         guard
-            let leftRange = rangeOfString(left), rightRange = rangeOfString(right, options: .BackwardsSearch)
-            where left != right && leftRange.endIndex != rightRange.startIndex
+            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards), left != right && leftRange.upperBound != rightRange.lowerBound
             else { return nil }
 
-        return self[leftRange.endIndex...rightRange.startIndex.predecessor()]
+        let rightRangeAgain = range(of: right, options: .backwards)
+        return self[leftRange.upperBound...right.index(before: (rightRangeAgain?.lowerBound)!)]
 
     }
     
     // https://gist.github.com/stevenschobert/540dd33e828461916c11
     func camelize() -> String {
         let source = clean(with: " ", allOf: "-", "_")
+        let index = source.index(source.startIndex, offsetBy: 1)
         if source.characters.contains(" ") {
-            let first = source.substringToIndex(source.startIndex.advancedBy(1))
-            let cammel = NSString(format: "%@", (source as NSString).capitalizedString.stringByReplacingOccurrencesOfString(" ", withString: "", options: [], range: nil)) as String
+            let first = source.substring(to: index)
+            let cammel = NSString(format: "%@", (source.capitalized as NSString).replacingOccurrences(of: " ", with: "")) as String
             let rest = String(cammel.characters.dropFirst())
             return "\(first)\(rest)"
         } else {
-            let first = (source as NSString).lowercaseString.substringToIndex(source.startIndex.advancedBy(1))
+            let first = (source as NSString).lowercased.substring(to: index)
             let rest = String(source.characters.dropFirst())
             return "\(first)\(rest)"
         }
     }
     
     func capitalize() -> String {
-        return capitalizedString
+        return capitalized
     }
     
     func contains(substring: String) -> Bool {
-        return rangeOfString(substring) != nil
+        return range(of: substring) != nil
     }
     
     func chompLeft(prefix: String) -> String {
-        if let prefixRange = rangeOfString(prefix) {
-            if prefixRange.endIndex >= endIndex {
-                return self[startIndex..<prefixRange.startIndex]
+        if let prefixRange = range(of: prefix) {
+            if prefixRange.upperBound >= endIndex {
+                return self[startIndex..<prefixRange.lowerBound]
             } else {
-                return self[prefixRange.endIndex..<endIndex]
+                return self[prefixRange.upperBound..<endIndex]
             }
         }
         return self
     }
     
     func chompRight(suffix: String) -> String {
-        if let suffixRange = rangeOfString(suffix, options: .BackwardsSearch) {
-            if suffixRange.endIndex >= endIndex {
-                return self[startIndex..<suffixRange.startIndex]
+        if let suffixRange = range(of: suffix, options: .backwards) {
+            if suffixRange.upperBound >= endIndex {
+                return self[startIndex..<suffixRange.lowerBound]
             } else {
-                return self[suffixRange.endIndex..<endIndex]
+                return self[suffixRange.upperBound..<endIndex]
             }
         }
         return self
     }
     
     func collapseWhitespace() -> String {
-        let components = componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).filter { !$0.isEmpty }
-        return components.joinWithSeparator(" ")
+        let componentsOf = components(separatedBy: NSCharacterSet.whitespacesAndNewlines).filter { !$0.isEmpty }
+        return componentsOf.joined(separator: " ")
     }
     
     func clean(with with: String, allOf: String...) -> String {
         var string = self
         for target in allOf {
-            string = string.stringByReplacingOccurrencesOfString(target, withString: with)
+            string = string.replacingOccurrences(of: target, with: with)
         }
         return string
     }
     
     func count(substring: String) -> Int {
-        return componentsSeparatedByString(substring).count-1
+        return components(separatedBy: substring).count-1
     }
     
     func endsWith(suffix: String) -> Bool {
@@ -91,7 +92,7 @@ public extension String {
     }
     
     func ensureLeft(prefix: String) -> String {
-        if startsWith(prefix) {
+        if startsWith(prefix: prefix) {
             return self
         } else {
             return "\(prefix)\(self)"
@@ -99,7 +100,7 @@ public extension String {
     }
     
     func ensureRight(suffix: String) -> String {
-        if endsWith(suffix) {
+        if endsWith(suffix: suffix) {
             return self
         } else {
             return "\(self)\(suffix)"
@@ -107,20 +108,28 @@ public extension String {
     }
     
     func indexOf(substring: String) -> Int? {
-        if let range = rangeOfString(substring) {
-            return startIndex.distanceTo(range.startIndex)
+        if let range = range(of: substring) {
+            return distance(from: startIndex, to: range.lowerBound)
         }
         return nil
     }
     
     func initials() -> String {
-        let words = self.componentsSeparatedByString(" ")
+        let words = self.components(separatedBy: " ")
         return words.reduce(""){$0 + $1[0...0]}
     }
     
     func initialsFirstAndLast() -> String {
-        let words = self.componentsSeparatedByString(" ")
+        let words = self.components(separatedBy: " ")
         return words.reduce("") { ($0 == "" ? "" : $0[0...0]) + $1[0...0]}
+    }
+    
+    subscript (r: CountableClosedRange<Int>) -> String {
+        get {
+            let startIndex =  self.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.index(startIndex, offsetBy: r.upperBound - r.lowerBound)
+            return self[startIndex...endIndex]
+        }
     }
     
     func isAlpha() -> Bool {
@@ -133,31 +142,31 @@ public extension String {
     }
     
     func isAlphaNumeric() -> Bool {
-        let alphaNumeric = NSCharacterSet.alphanumericCharacterSet()
-        return componentsSeparatedByCharactersInSet(alphaNumeric).joinWithSeparator("").length == 0
+        let alphaNumeric = NSCharacterSet.alphanumerics
+        return components(separatedBy: alphaNumeric).joined(separator: "").length == 0
     }
     
     func isEmpty() -> Bool {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).length == 0
+        return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).length == 0
     }
     
     func isNumeric() -> Bool {
-        if let _ = defaultNumberFormatter().numberFromString(self) {
+        if let _ = NumberFormatter().number(from: self) {
             return true
         }
         return false
     }
     
-    func join<S: SequenceType>(elements: S) -> String {
-        return elements.map{String($0)}.joinWithSeparator(self)
+    func join<S: Sequence>(elements: S) -> String {
+        return elements.map{String(describing: $0)}.joined(separator: self)
     }
     
     func latinize() -> String {
-        return self.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+        return self.folding(options: .diacriticInsensitive, locale: Locale.current)
     }
     
     func lines() -> [String] {
-        return self.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+        return self.components(separatedBy: NSCharacterSet.newlines)
     }
     
     var length: Int {
@@ -167,24 +176,24 @@ public extension String {
     }
     
     func pad(n: Int, _ string: String = " ") -> String {
-        return "".join([string.times(n), self, string.times(n)])
+        return "".join(elements: [string.times(n: n), self, string.times(n: n)])
     }
     
     func padLeft(n: Int, _ string: String = " ") -> String {
-        return "".join([string.times(n), self])
+        return "".join(elements: [string.times(n: n), self])
     }
     
     func padRight(n: Int, _ string: String = " ") -> String {
-        return "".join([self, string.times(n)])
+        return "".join(elements: [self, string.times(n: n)])
     }
     
     func slugify(withSeparator separator: Character = "-") -> String {
-        let slugCharacterSet = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\(separator)")
+        let slugCharacterSet = NSCharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\(separator)")
         return latinize()
-            .lowercaseString
-            .componentsSeparatedByCharactersInSet(slugCharacterSet.invertedSet)
+            .lowercased()
+            .components(separatedBy: slugCharacterSet.inverted)
             .filter { $0 != "" }
-            .joinWithSeparator(String(separator))
+            .joined(separator: String(separator))
     }
     
     func split(separator: Character) -> [String] {
@@ -196,11 +205,11 @@ public extension String {
     }
     
     func stripPunctuation() -> String {
-        return componentsSeparatedByCharactersInSet(.punctuationCharacterSet())
-            .joinWithSeparator("")
-            .componentsSeparatedByString(" ")
+        return components(separatedBy: .punctuationCharacters)
+            .joined(separator: "")
+            .components(separatedBy: " ")
             .filter { $0 != "" }
-            .joinWithSeparator(" ")
+            .joined(separator: " ")
     }
     
     func times(n: Int) -> String {
@@ -208,30 +217,30 @@ public extension String {
     }
     
     func toFloat() -> Float? {
-        if let number = defaultNumberFormatter().numberFromString(self) {
+        if let number = NumberFormatter().number(from: self) {
             return number.floatValue
         }
         return nil
     }
     
     func toInt() -> Int? {
-        if let number = defaultNumberFormatter().numberFromString(self) {
-            return number.integerValue
+        if let number = NumberFormatter().number(from: self) {
+            return number.intValue
         }
         return nil
     }
     
-    func toDouble(locale: NSLocale = NSLocale.systemLocale()) -> Double? {
-        let nf = localeNumberFormatter(locale)
-
-        if let number = nf.numberFromString(self) {
+    func toDouble(locale: Locale = Locale.current) -> Double? {
+        let nf = NumberFormatter()
+        nf.locale = locale as Locale!
+        if let number = nf.number(from: self) {
             return number.doubleValue
         }
         return nil
     }
     
     func toBool() -> Bool? {
-        let trimmed = self.trimmed().lowercaseString
+        let trimmed = self.trimmed().lowercased()
         if trimmed == "true" || trimmed == "false" {
             return (trimmed as NSString).boolValue
         }
@@ -239,99 +248,51 @@ public extension String {
     }
     
     func toDate(format: String = "yyyy-MM-dd") -> NSDate? {
-        return dateFormatter(format).dateFromString(self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: self) as NSDate?
     }
     
     func toDateTime(format: String = "yyyy-MM-dd HH:mm:ss") -> NSDate? {
-        return toDate(format)
+        return toDate(format: format)
     }
     
     func trimmedLeft() -> String {
-        if let range = rangeOfCharacterFromSet(NSCharacterSet.whitespaceAndNewlineCharacterSet().invertedSet) {
-            return self[range.startIndex..<endIndex]
+        if let range = rangeOfCharacter(from: NSCharacterSet.whitespacesAndNewlines.inverted) {
+            return self[range.lowerBound..<endIndex]
         }
         return self
     }
     
     func trimmedRight() -> String {
-        if let range = rangeOfCharacterFromSet(NSCharacterSet.whitespaceAndNewlineCharacterSet().invertedSet, options: NSStringCompareOptions.BackwardsSearch) {
-            return self[startIndex..<range.endIndex]
+        if let range = rangeOfCharacter(from: NSCharacterSet.whitespacesAndNewlines.inverted, options: NSString.CompareOptions.backwards) {
+            return self[startIndex..<range.upperBound]
         }
         return self
     }
     
     func trimmed() -> String {
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
     }
     
     subscript(r: Range<Int>) -> String {
         get {
-            let startIndex = self.startIndex.advancedBy(r.startIndex)
-            let endIndex = self.startIndex.advancedBy(r.endIndex - r.startIndex)
+            let startIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+            let endIndex = self.index(self.startIndex, offsetBy: r.upperBound - r.lowerBound)
             return self[startIndex..<endIndex]
         }
     }
     
     func substring(startIndex: Int, length: Int) -> String {
-        let start = self.startIndex.advancedBy(startIndex)
-        let end = self.startIndex.advancedBy(startIndex + length)
+        let start = self.index(self.startIndex, offsetBy: startIndex)
+        let end = self.index(self.startIndex, offsetBy:startIndex + length)
         return self[start..<end]
     }
     
     subscript(i: Int) -> Character {
         get {
-            let index = self.startIndex.advancedBy(i)
+            let index = self.index(startIndex, offsetBy: i)
             return self[index]
         }
     }    
-}
-
-private enum ThreadLocalIdentifier {
-    case DateFormatter(String)
-
-    case DefaultNumberFormatter
-    case LocaleNumberFormatter(NSLocale)
-
-    var objcDictKey: String {
-        switch self {
-        case .DateFormatter(let format):
-            return "SS\(self)\(format)"
-        case .LocaleNumberFormatter(let l):
-            return "SS\(self)\(l.localeIdentifier)"
-        default:
-            return "SS\(self)"
-        }
-    }
-}
-
-private func threadLocalInstance<T: AnyObject>(identifier: ThreadLocalIdentifier, @autoclosure initialValue: () -> T) -> T {
-    let storage = NSThread.currentThread().threadDictionary
-    let k = identifier.objcDictKey
-
-    let instance: T = storage[k] as? T ?? initialValue()
-    if storage[k] == nil {
-        storage[k] = instance
-    }
-
-    return instance
-}
-
-private func dateFormatter(format: String) -> NSDateFormatter {
-    return threadLocalInstance(.DateFormatter(format), initialValue: {
-        let df = NSDateFormatter()
-        df.dateFormat = format
-        return df
-    }())
-}
-
-private func defaultNumberFormatter() -> NSNumberFormatter {
-    return threadLocalInstance(.DefaultNumberFormatter, initialValue: NSNumberFormatter())
-}
-
-private func localeNumberFormatter(locale: NSLocale) -> NSNumberFormatter {
-    return threadLocalInstance(.LocaleNumberFormatter(locale), initialValue: {
-        let nf = NSNumberFormatter()
-        nf.locale = locale
-        return nf
-    }())
 }
